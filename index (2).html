@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketing Academy - Master Sitemaps & Online Payments</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #0B0F23;
+            --bg-secondary: #131829;
+            --bg-tertiary: #1E2347;
+            --bg-quaternary: #252B54;
+            --accent-blue: #00D4FF;
+            --accent-green: #00FF88;
+            --accent-purple: #B855F7;
+            --accent-orange: #FF6B35;
+            --accent-pink: #FF3D8A;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B3B8DB;
+            --text-tertiary: #8B93B8;
+            --border-color: #2A3052;
+            --border-accent: #3A4572;
+            --code-bg: #0D1421;
+            --code-border: #1E293B;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.5);
+            --glow-blue: 0 0 20px rgba(0, 212, 255, 0.3);
+            --glow-green: 0 0 20px rgba(0, 255, 136, 0.3);
+            --glow-purple: 0 0 20px rgba(184, 85, 247, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+        /* Mobile Navigation Toggle */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1000;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-accent);
+            color: var(--text-primary);
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+        }
+
+        .mobile-toggle:hover {
+            background: var(--bg-tertiary);
+            color: var(--accent-blue);
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 60% 20%, rgba(184, 85, 247, 0.1) 0%, transparent 50%);
+            animation: backgroundShift 15s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.02); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, var(--accent-green), var(--accent-blue));
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 320px;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+            border-right: 2px solid var(--border-accent);
+            padding: 2rem 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .logo {
+            padding: 0 2rem 2rem;
+            border-bottom: 2px solid var(--border-accent);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+            border-radius: 2px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .logo p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0 1rem;
+        }
+
+        .nav-item {
+            padding: 1rem 1.5rem;
+            margin: 0.5rem 0;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+            font-weight: 500;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-item:hover::before {
+            left: 100%;
+        }
+
+        .nav-item:hover {
+            background: var(--bg-quaternary);
+            transform: translateX(8px);
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, var(--bg-quaternary), var(--bg-tertiary));
+            border-left: 4px solid var(--accent-green);
+            color: var(--accent-green);
+            transform: translateX(8px);
+            box-shadow: var(--glow-green);
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-green);
+        }
+
+        .nav-item i {
+            font-size: 1.3rem;
+            min-width: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover i {
+            transform: scale(1.1);
+            color: var(--accent-blue);
+        }
+
+        .nav-item.active i {
+            color: var(--accent-green);
+        }
+
+        .nav-item span {
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 3rem 4rem;
+            max-width: calc(100vw - 320px);
+            position: relative;
+        }
+
+        .module {
+            display: none;
+            animation: moduleSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .module.active {
+            display: block;
+        }
+
+        @keyframes moduleSlideIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.95);
+                filter: blur(5px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .module-header {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border-radius: 20px;
+            border: 2px solid var(--border-accent);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            animation: headerGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes headerGlow {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        .module-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .module-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+        }
+
+        .section {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 2px solid var(--border-accent);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green), var(--accent-purple));
+            border-radius: 16px 16px 0 0;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section h2 {
+            color: var(--accent-blue);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section h2::before {
+            content: '';
+            width: 4px;
+            height: 2rem;
+            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
+            border-radius: 2px;
+        }
+
+        .section h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1.25rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section h3::before {
+            content: '▶';
+            color: var(--accent-green);
+            font-size: 0.8rem;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .tab:hover {
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
+        }
+
+        .tab.active {
+            color: var(--accent-blue);
+            border-bottom-color: var(--accent-blue);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .code-container {
+            position: relative;
+            margin: 2rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .code-header {
+            background: linear-gradient(135deg, var(--code-bg), var(--bg-tertiary));
+            padding: 1rem 1.5rem;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid var(--code-border);
+            border-bottom: 1px solid var(--code-border);
+        }
+
+        .code-label {
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .code-label::before {
+            content: '◉';
+            color: var(--accent-green);
+            font-size: 0.7rem;
+        }
+
+        .copy-btn {
+            background: var(--bg-quaternary);
+            border: 2px solid var(--border-accent);
+            color: var(--text-primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .copy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .copy-btn:hover::before {
+            left: 100%;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+            border-color: var(--accent-blue);
+            transform: translateY(-1px);
+            box-shadow: var(--glow-blue);
+        }
+
+        .copy-btn.copied {
+            background: var(--success);
+            color: white;
+            border-color: var(--success);
+            box-shadow: var(--glow-green);
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 2rem;
+            border-radius: 0 0 12px 12px;
+            overflow-x: auto;
+            border: 2px solid var(--code-border);
+            border-top: none;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            color: var(--accent-green);
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .accordion {
+            margin: 1.5rem 0;
+        }
+
+        .accordion-item {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .accordion-header:hover {
+            background: var(--bg-secondary);
+        }
+
+        .accordion-header h4 {
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s ease;
+            color: var(--accent-green);
+            font-size: 1.2rem;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        .accordion-body {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+        }
+
+        .accordion-body p {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .diagram-container {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .flow-box {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            min-width: 300px;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            color: var(--accent-green);
+        }
+
+        .flow-split {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .flow-branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .payment-cycle {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .cycle-step {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .cycle-step:hover {
+            transform: translateY(-5px);
+            border-left-color: var(--accent-green);
+        }
+
+        .cycle-step h4 {
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-number {
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .info-box {
+            background: var(--bg-tertiary);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .info-box.success {
+            border-left-color: var(--success);
+        }
+
+        .info-box.warning {
+            border-left-color: var(--warning);
+        }
+
+        .info-box.error {
+            border-left-color: var(--error);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-card {
+            background: var(--bg-tertiary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .comparison-card h4 {
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .highlight {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-content {
+                margin-left: 280px;
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 999;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                max-width: 100vw;
+                padding: 1rem;
+                margin-top: 4rem;
+            }
+
+            .module-header {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .module-header h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+
+            .module-header p {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .section h3 {
+                font-size: 1.2rem;
+                margin: 1.5rem 0 1rem;
+            }
+
+            .code-container {
+                margin: 1.5rem 0;
+            }
+
+            .code-header {
+                padding: 0.75rem 1rem;
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+            }
+
+            .copy-btn {
+                align-self: flex-end;
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            pre {
+                padding: 1rem;
+                font-size: 0.85rem;
+                overflow-x: auto;
+            }
+
+            .tab-container {
+                margin: 1.5rem 0;
+            }
+
+            .tabs {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .tab {
+                padding: 0.75rem 1rem;
+                text-align: center;
+            }
+
+            .tab-content {
+                padding: 1rem;
+            }
+
+            .accordion-item {
+                margin-bottom: 1rem;
+            }
+
+            .accordion-header {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .accordion-body {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .info-box {
+                padding: 1rem;
+                margin: 1rem 0;
+            }
+
+            .info-box p {
+                font-size: 0.9rem;
+            }
+
+            .payment-cycle {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .cycle-step {
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .step-number {
+                font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+                display: block;
+            }
+
+            .diagram-container {
+                margin: 1.5rem 0;
+                overflow-x: auto;
+                padding: 1rem 0;
+            }
+
+            .flowchart {
+                min-width: 300px;
+                padding: 1rem;
+            }
+
+            .flow-box {
+                padding: 0.75rem;
+                font-size: 0.85rem;
+                margin: 0.5rem 0;
+                min-height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .flow-arrow {
+                margin: 0.25rem 0;
+            }
+
+            .flow-split {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .flow-branch {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 0.75rem;
+                margin-top: 4rem;
+            }
+
+            .module-header {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .module-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .section {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .section h2 {
+                font-size: 1.3rem;
+            }
+
+            .section h3 {
+                font-size: 1.1rem;
+            }
+
+            .code-header {
+                padding: 0.5rem 0.75rem;
+            }
+
+            .copy-btn {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.75rem;
+            }
+
+            pre {
+                padding: 0.75rem;
+                font-size: 0.8rem;
+            }
+
+            .tab {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.85rem;
+            }
+
+            .accordion-header {
+                padding: 0.75rem;
+                font-size: 0.85rem;
+            }
+
+            .accordion-body {
+                padding: 0.75rem;
+                font-size: 0.85rem;
+            }
+
+            .info-box {
+                padding: 0.75rem;
+                margin: 0.75rem 0;
+            }
+
+            .payment-cycle {
+                gap: 0.75rem;
+            }
+
+            .cycle-step {
+                padding: 0.75rem;
+            }
+
+            .cycle-step h4 {
+                font-size: 1rem;
+            }
+
+            .flow-box {
+                padding: 0.5rem;
+                font-size: 0.8rem;
+                min-height: 50px;
+            }
+
+            .sidebar {
+                width: 100vw;
+                max-width: 100vw;
+            }
+
+            .sidebar .logo {
+                padding: 1rem;
+            }
+
+            .sidebar .logo h1 {
+                font-size: 1.3rem;
+            }
+
+            .nav-item {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Navigation Toggle -->
+    <button class="mobile-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">
+                <h1><i class="fas fa-graduation-cap"></i> LearnHub</h1>
+                <p>Digital Marketing Mastery</p>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item active" onclick="switchModule('module1', this)">
+                    <i class="fas fa-sitemap"></i>
+                    <span>Module 1: Sitemaps</span>
+                </li>
+                <li class="nav-item" onclick="switchModule('module2', this)">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Module 2: Online Payments</span>
+                </li>
+                <li class="nav-item" onclick="switchModule('module3', this)">
+                    <i class="fas fa-video"></i>
+                    <span>Module 3: Summary</span>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <!-- Module 1: Sitemaps -->
+            <div id="module1" class="module active">
+                <div class="module-header">
+                    <h1><i class="fas fa-sitemap"></i> Module 1: Sitemaps</h1>
+                    <p style="color: var(--text-secondary);">Understanding XML and HTML Sitemaps for SEO Success</p>
+                </div>
+
+                <section class="section">
+                    <h2>What is a Sitemap?</h2>
+                    <div class="info-box">
+                        <p><strong>Definition:</strong> A Sitemap is a map that tells Google: "Hey Google, these are all the pages I have… please index them." Instead of the Google bot wandering around and getting lost, we make it easier for it.</p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Types of Sitemap</h2>
+                    
+                    <div class="tabs">
+                        <button class="tab active" onclick="switchTab('xml-tab', this)">XML Sitemap</button>
+                        <button class="tab" onclick="switchTab('html-tab', this)">HTML Sitemap</button>
+                    </div>
+
+                    <div id="xml-tab" class="tab-content active">
+                        <h3>XML Sitemap</h3>
+                        <ul>
+                            <li><strong>Made for Google and search engines</strong></li>
+                            <li>It's a code file.</li>
+                        </ul>
+
+                        <h3>XML Sitemap Example</h3>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span class="code-label">sitemap.xml</span>
+                                <button class="copy-btn" onclick="copyCode(this)">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
+                            <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;urlset
+     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"&gt;
+&lt;!-- created with Free Online Sitemap Generator www.xml-sitemaps.com --&gt;
+
+&lt;url&gt;
+ &lt;loc&gt;https://lolymagdy2006-boop.github.io/lenADHD-/&lt;/loc&gt;
+ &lt;lastmod&gt;2025-11-18T08:13:25+00:00&lt;/lastmod&gt;
+ &lt;priority&gt;1.00&lt;/priority&gt;
+&lt;/url&gt;
+&lt;/urlset&gt;</code></pre>
+                        </div>
+
+                        <h3>Line-by-line Explanation</h3>
+                        <div class="accordion">
+                            <div class="accordion-item" onclick="toggleAccordion(this)">
+                                <div class="accordion-header">
+                                    <h4>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</h4>
+                                    <i class="fas fa-chevron-down accordion-icon"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-body">
+                                        <p>Defines the file type and encoding.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item" onclick="toggleAccordion(this)">
+                                <div class="accordion-header">
+                                    <h4>&lt;urlset ...&gt;</h4>
+                                    <i class="fas fa-chevron-down accordion-icon"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-body">
+                                        <p>The big container that holds all pages.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item" onclick="toggleAccordion(this)">
+                                <div class="accordion-header">
+                                    <h4>xmlns="..."</h4>
+                                    <i class="fas fa-chevron-down accordion-icon"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-body">
+                                        <p>The official namespace that Google understands.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item" onclick="toggleAccordion(this)">
+                                <div class="accordion-header">
+                                    <h4>&lt;url&gt;</h4>
+                                    <i class="fas fa-chevron-down accordion-icon"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-body">
+                                        <p>Start of one page's data.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item" onclick="toggleAccordion(this)">
+                                <div class="accordion-header">
+                                    <h4>&lt;loc&gt;</h4>
+                                    <i class="fas fa-chevron-down accordion-icon"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-body">
+                                        <p>The page link.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item" onclick="toggleAccordion(this)">
+                                <div class="accordion-header">
+                                    <h4>&lt;lastmod&gt;</h4>
+                                    <i class="fas fa-chevron-down accordion-icon"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-body">
+                                        <p>The last time the page was modified.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item" onclick="toggleAccordion(this)">
+                                <div class="accordion-header">
+                                    <h4>&lt;priority&gt;</h4>
+                                    <i class="fas fa-chevron-down accordion-icon"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-body">
+                                        <p>Its importance for Google.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item" onclick="toggleAccordion(this)">
+                                <div class="accordion-header">
+                                    <h4>&lt;/urlset&gt;</h4>
+                                    <i class="fas fa-chevron-down accordion-icon"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-body">
+                                        <p>End of the sitemap file.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="html-tab" class="tab-content">
+                        <h3>HTML Sitemap</h3>
+                        <ul>
+                            <li><strong>An HTML page with all the pages</strong></li>
+                            <li>Made for users</li>
+                            <li>Greatly improves navigation</li>
+                        </ul>
+
+                        <h3>HTML Sitemap Example</h3>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span class="code-label">sitemap.html</span>
+                                <button class="copy-btn" onclick="copyCode(this)">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
+                            <pre><code>&lt;ul&gt;
+ &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="about.html"&gt;About Us&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="contact.html"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                        </div>
+
+                        <h3>Key Elements</h3>
+                        <div class="info-box">
+                            <ul>
+                                <li><span class="highlight">&lt;ul&gt;</span> = list</li>
+                                <li><span class="highlight">&lt;li&gt;</span> = list item</li>
+                                <li><span class="highlight">&lt;a&gt;</span> = link to a page</li>
+                            </ul>
+                            <p><strong>Note:</strong> HTML Sitemap is very important for site visitors.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>How to Make a Sitemap?</h2>
+                    
+                    <h3>First: XML Sitemap Steps for your site</h3>
+                    <ol>
+                        <li>Gather all the pages in lenADHD:
+                            <ul>
+                                <li>Home page</li>
+                                <li>Inner pages if any</li>
+                            </ul>
+                        </li>
+                        <li>Arrange them according to the site structure (Main page → sub sections → content).</li>
+                        <li>Create an XML Sitemap file (Like the one the site generated for you shown above).</li>
+                        <li>Upload it to: <code>https://lolymagdy2006-boop.github.io/lenADHD-/sitemap.xml</code></li>
+                        <li>Notify Google in Search Console:
+                            <ul>
+                                <li>You need to Add sitemap</li>
+                                <li>Enter /sitemap.xml</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h3>Second: HTML Sitemap Steps for your site</h3>
+                    <ol>
+                        <li>Open VS Code.</li>
+                        <li>Create a new page called: <code>sitemap.html</code>.</li>
+                        <li>Add links to all pages:
+                            <div class="code-container" style="margin: 0.5rem 0;">
+                                <pre style="padding: 1rem; font-size: 0.85rem;"><code>&lt;ul&gt;
+  &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                            </div>
+                        </li>
+                        <li>Upload it to GitHub Pages.</li>
+                        <li>Add a link to the HTML Sitemap in the Footer so users can find it easily.</li>
+                    </ol>
+                </section>
+
+                <section class="section">
+                    <h2>Why do we need a Sitemap?</h2>
+                    
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4><i class="fas fa-file-code"></i> XML Sitemap</h4>
+                            <ul>
+                                <li>Helps Google find all your pages</li>
+                                <li>Speeds up indexing</li>
+                                <li>Important if the site is big or has many new pages</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-card">
+                            <h4><i class="fas fa-file-alt"></i> HTML Sitemap</h4>
+                            <ul>
+                                <li>Helps users reach any page easily</li>
+                                <li>Reduces Bounce Rate</li>
+                                <li>Improves User Experience</li>
+                                <li>Makes the site easier to navigate</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Do We Need It?</h2>
+                    <div class="info-box success">
+                        <p><strong>Answer: Yes, absolutely.</strong></p>
+                        <p>Even if developers are the ones coding it… As a Digital Marketer, you are responsible for:</p>
+                        <ul>
+                            <li>Ensuring XML Sitemap is uploaded and submitted to Google</li>
+                            <li>Ensuring there is a clear HTML Sitemap for users</li>
+                            <li>Making sure Google sees all pages</li>
+                            <li>Monitoring Index Coverage in Search Console</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Advantages and Disadvantages</h2>
+                    
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4><i class="fas fa-check-circle" style="color: var(--success);"></i> XML Sitemap Advantages</h4>
+                            <ul>
+                                <li>Speeds up indexing</li>
+                                <li>Improves SEO</li>
+                                <li>Organizes site structure</li>
+                                <li>Important for large websites</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-card">
+                            <h4><i class="fas fa-times-circle" style="color: var(--error);"></i> XML Disadvantages</h4>
+                            <ul>
+                                <li>Needs to be updated</li>
+                                <li>Incorrect files can harm indexing</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-card">
+                            <h4><i class="fas fa-check-circle" style="color: var(--success);"></i> HTML Sitemap Advantages</h4>
+                            <ul>
+                                <li>Makes navigation easier</li>
+                                <li>Helps users reach any page</li>
+                                <li>Very useful for large numbers of pages</li>
+                                <li>Keeps all pages "close" to users</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-card">
+                            <h4><i class="fas fa-times-circle" style="color: var(--error);"></i> HTML Sitemap Disadvantages</h4>
+                            <ul>
+                                <li>Needs manual updating</li>
+                                <li>No direct effect on Google like XML</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>What Happens If There is No Sitemap?</h2>
+                    
+                    <h3>For XML:</h3>
+                    <div class="info-box error">
+                        <ul>
+                            <li>Google may not see all pages</li>
+                            <li>New pages will appear late</li>
+                            <li>SEO performance drops</li>
+                            <li>Some pages may disappear from search</li>
+                        </ul>
+                    </div>
+
+                    <h3>For HTML:</h3>
+                    <div class="info-box warning">
+                        <ul>
+                            <li>Visitors may get lost</li>
+                            <li>Important pages may be hard to reach</li>
+                            <li>Weak user experience</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Tools to Make a Sitemap</h2>
+                    
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4><i class="fas fa-tools"></i> XML Sitemap Tools</h4>
+                            <ul>
+                                <li>XML-sitemaps.com</li>
+                                <li>Screaming Frog</li>
+                                <li>Yoast SEO</li>
+                                <li>SEMrush</li>
+                                <li>Ahrefs</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-card">
+                            <h4><i class="fas fa-tools"></i> HTML Sitemap Tools</h4>
+                            <ul>
+                                <li>Any Website Builder like Wix / Shopify (automatically generate HTML sitemap)</li>
+                                <li>WordPress Plugins: Simple Sitemap, WP Sitemap Page</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Module 2: Online Payments -->
+            <div id="module2" class="module">
+                <div class="module-header">
+                    <h1><i class="fas fa-credit-card"></i> Module 2: Online Payments & Code</h1>
+                    <p style="color: var(--text-secondary);">Understanding Payment Integration and Implementation</p>
+                </div>
+
+                <section class="section">
+                    <h2>Cycle of Online Payment (6 Simple Steps)</h2>
+                    
+                    <div class="diagram-container">
+                        <div class="payment-cycle">
+                            <div class="cycle-step">
+                                <h4><span class="step-number">1</span> Customer Request</h4>
+                                <p>The customer clicks Pay Now button.</p>
+                            </div>
+                            <div class="cycle-step">
+                                <h4><span class="step-number">2</span> Website Sends Payment Request</h4>
+                                <p>The website sends payment data to the Payment Gateway.</p>
+                            </div>
+                            <div class="cycle-step">
+                                <h4><span class="step-number">3</span> Payment Gateway Sends Request to Bank</h4>
+                                <p>The gateway sends the data to the bank.</p>
+                            </div>
+                            <div class="cycle-step">
+                                <h4><span class="step-number">4</span> Bank Authentication</h4>
+                                <p>The bank checks the card, balance, and security (3D Secure).</p>
+                            </div>
+                            <div class="cycle-step">
+                                <h4><span class="step-number">5</span> Bank Response</h4>
+                                <p>The bank sends the result to the gateway → the gateway sends it to the website.</p>
+                            </div>
+                            <div class="cycle-step">
+                                <h4><span class="step-number">6</span> Order Confirmation</h4>
+                                <p>If the transaction is successful → the website activates the service and sends a receipt.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box success">
+                        <p><strong>📝 Note:</strong> All these steps happen in seconds for a smooth user experience.</p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Fetch Example</h2>
+                    
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-label">JavaScript - Fetch API</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code>fetch("https://api.example.com/pay", {
+ method: "POST",
+ headers: { "Content-Type": "application/json" },
+ body: JSON.stringify({
+   amount: 100,
+   currency: "EGP",
+   customer: "Lena"
+ })
+})
+.then(response => response.json())
+.then(data => {
+ console.log("Payment Response:", data);
+})
+.catch(error => {
+ console.error("Error:", error);
+});</code></pre>
+                    </div>
+
+                    <h3>Line by Line Explanation</h3>
+                    <div class="accordion">
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>fetch(...)</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Send a request to the server to process the payment.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>method: "POST"</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>POST request means sending data (not just reading).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>headers: {...}</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Tell the server that the data we send is in JSON format.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>body: JSON.stringify({...})</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>The payment data: amount, currency, customer name. JSON.stringify converts it to a JSON text.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>.then(response => response.json())</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Convert the server response from JSON to a JavaScript object.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>.then(data => ...)</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Show the response in console; can also update the page or alert the customer.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>.catch(error => ...)</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Handle any problem with the server or network.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>🔥 Definition:</strong> Fetch = A browser method to send requests to any API and receive a response.</p>
+                    </div>
+                    
+                    <div class="info-box success">
+                        <p><strong>Note:</strong> All these steps happen in seconds for a smooth user experience.</p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Axios Example</h2>
+                    
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-label">JavaScript - Axios</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code>axios.post("https://api.example.com/pay", {
+ amount: 100,
+ currency: "EGP",
+ customer: "Lena"
+})
+.then(response => {
+ console.log("Payment Response:", response.data);
+})
+.catch(error => {
+ console.error("Error:", error);
+});</code></pre>
+                    </div>
+
+                    <h3>Line by Line Explanation</h3>
+                    <div class="accordion">
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>axios.post(...)</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Send a POST request to the link with data.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>{ amount: 100... }</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>The data sent to the server to process payment.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>.then(...)</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Display the server response after success.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>.catch(...)</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Handle any error during the request (e.g., network issues).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box success">
+                        <p><strong>🔥 Why Axios is easier than fetch because:</strong></p>
+                        <ul>
+                            <li>It automatically converts JSON</li>
+                            <li>Handles errors easily</li>
+                            <li>Works in both frontend and Node.js</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Form + Fetch on Website</h2>
+                    
+                    <h3>HTML Form</h3>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-label">HTML</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code>&lt;form id="payForm"&gt;
+ &lt;input type="number" id="amount" placeholder="Amount" /&gt;
+ &lt;button type="submit"&gt;Pay&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                    </div>
+
+                    <h3>JavaScript</h3>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-label">JavaScript</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code>document.getElementById("payForm").addEventListener("submit", function(e){
+ e.preventDefault();
+ const amount = document.getElementById("amount").value;
+
+ fetch("/api/pay", {
+   method: "POST",
+   headers: {"Content-Type": "application/json"},
+   body: JSON.stringify({ amount })
+ })
+ .then(res => res.json())
+ .then(data => alert("Payment Status: " + data.status));
+});</code></pre>
+                    </div>
+
+                    <h3>Server (Node.js)</h3>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-label">Node.js</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code>app.post("/api/pay", (req, res) => {
+ const amount = req.body.amount;
+ res.json({ status: "success", amount });
+});</code></pre>
+                    </div>
+
+                    <h3>Explanation</h3>
+                    <div class="accordion">
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>form id="payForm"</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>HTML form to enter amount.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>addEventListener("submit")</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Prevent default form submission and handle with JS.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>fetch("/api/pay")</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Send data to server.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>JSON.stringify</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Convert amount to JSON.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>.then(res => res.json())</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Convert response to JS object.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>app.post</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Server receives data and sends response.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Stripe Checkout (Backend + Frontend)</h2>
+                    
+                    <h3>Backend Node.js</h3>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-label">Node.js - Backend</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code>const express = require("express");
+const stripe = require("stripe")("YOUR_SECRET_KEY");
+const app = express();
+app.use(express.static("public"));
+app.use(express.json());
+
+app.post("/create-checkout-session", async (req, res) => {
+ const session = await stripe.checkout.sessions.create({
+   payment_method_types: ["card"],
+   line_items: [{ 
+     price_data: { 
+       currency: "usd", 
+       product_data: { name: "Demo Product" }, 
+       unit_amount: 2000 
+     }, 
+     quantity: 1 
+   }],
+   mode: "payment",
+   success_url: "http://localhost:4242/success.html",
+   cancel_url: "http://localhost:4242/cancel.html",
+ });
+ res.json({ id: session.id });
+});
+
+app.listen(4242, () => console.log("Server running on port 4242"));</code></pre>
+                    </div>
+
+                    <h3>Frontend HTML + JS</h3>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-label">HTML + JavaScript - Frontend</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code>&lt;button id="checkout-button"&gt;Pay Now&lt;/button&gt;
+&lt;script src="https://js.stripe.com/v3/"&gt;&lt;/script&gt;</code></pre>
+                    </div>
+
+                    <h3>Explanation</h3>
+                    <div class="accordion">
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>require("stripe")</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Import Stripe Library.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>app.use(express.json())</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Read JSON data.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>stripe.checkout.sessions.create</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Create a session with product/price/currency.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>success_url</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Where to go after payment.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" onclick="toggleAccordion(this)">
+                            <div class="accordion-header">
+                                <h4>stripe.redirectToCheckout</h4>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Redirect customer to Stripe's hosted page.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Stripe Flowchart</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Visual representation of the Stripe payment flow</p>
+                    
+                    <div class="diagram-container">
+                        <div class="flowchart">
+                            <div class="flow-box">
+                                <i class="fas fa-mouse-pointer"></i><br>
+                                Client clicks Pay Now
+                            </div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-box">
+                                <i class="fas fa-code"></i><br>
+                                Frontend JS calls /create-checkout-session
+                            </div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-box">
+                                <i class="fas fa-server"></i><br>
+                                Backend Node.js creates Stripe Checkout Session
+                            </div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-box">
+                                <i class="fas fa-credit-card"></i><br>
+                                Stripe processes payment
+                            </div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-split">
+                                <div class="flow-branch">
+                                    <div class="flow-box" style="background: linear-gradient(135deg, var(--success), var(--accent-green));">
+                                        <i class="fas fa-check-circle"></i><br>
+                                        Success URL
+                                    </div>
+                                </div>
+                                <div class="flow-branch">
+                                    <div class="flow-box" style="background: linear-gradient(135deg, var(--error), var(--warning));">
+                                        <i class="fas fa-times-circle"></i><br>
+                                        Cancel URL
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Module 3: Summary -->
+            <div id="module3" class="module">
+                <header class="module-header">
+                    <div class="header-content">
+                        <div class="header-badge">
+                            <i class="fas fa-video"></i>
+                            MODULE 3
+                        </div>
+                        <h1>Summary</h1>
+                        <p>Video summaries and key takeaways from our digital marketing course</p>
+                    </div>
+                </header>
+
+                <section class="section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-play-circle"></i> Course Summary Videos</h2>
+                        <p>Watch these comprehensive video summaries to reinforce your learning</p>
+                    </div>
+
+                    <div class="video-container">
+                        <div class="video-item">
+                            <h3><i class="fas fa-sitemap"></i> Payment Integration Tutorial</h3>
+                            <div class="video-wrapper">
+                                <iframe 
+                                    width="100%" 
+                                    height="400" 
+                                    src="https://www.youtube.com/embed/o-gQkAnyg54" 
+                                    title="إزاي تربط الدفع الإلكتروني في موقعك؟ شرح عملي مبسط" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <p class="video-description">
+                                <i class="fas fa-info-circle"></i>
+                                Practical tutorial on how to integrate electronic payment systems into your website with a simplified explanation.
+                            </p>
+                        </div>
+
+                        <div class="video-item">
+                            <h3><i class="fas fa-credit-card"></i> PHP Stripe Checkout Implementation</h3>
+                            <div class="video-wrapper">
+                                <iframe 
+                                    width="100%" 
+                                    height="400" 
+                                    src="https://www.youtube.com/embed/1KxD8J8CAFg" 
+                                    title="Simple PHP Stripe Checkout - Securely Accept One-Time Card Payments in your PHP Project" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <p class="video-description">
+                                <i class="fas fa-info-circle"></i>
+                                Learn how to securely accept one-time card payments in your PHP project using Stripe Checkout.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="summary-section">
+                        <h3><i class="fas fa-lightbulb"></i> Key Takeaways</h3>
+                        <div class="takeaway-grid">
+                            <div class="takeaway-item">
+                                <i class="fas fa-sitemap"></i>
+                                <h4>Website Structure</h4>
+                                <p>Proper sitemaps and site architecture are crucial for SEO success and user experience.</p>
+                            </div>
+                            <div class="takeaway-item">
+                                <i class="fas fa-search"></i>
+                                <h4>SEO Optimization</h4>
+                                <p>Search engine optimization requires both technical implementation and content strategy.</p>
+                            </div>
+                            <div class="takeaway-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <h4>Secure Payments</h4>
+                                <p>Modern payment processing requires proper security measures and user-friendly interfaces.</p>
+                            </div>
+                            <div class="takeaway-item">
+                                <i class="fas fa-chart-line"></i>
+                                <h4>Business Growth</h4>
+                                <p>Combining technical skills with marketing strategy drives sustainable business growth.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Module switching function
+        function switchModule(moduleId, element) {
+            // Hide all modules
+            document.querySelectorAll('.module').forEach(mod => {
+                mod.classList.remove('active');
+            });
+            
+            // Remove active class from all nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Show selected module
+            document.getElementById(moduleId).classList.add('active');
+            
+            // Add active class to clicked nav item
+            element.classList.add('active');
+            
+            // Simple scroll to top of page
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Tab switching function
+        function switchTab(tabId, element) {
+            const parentSection = element.closest('.section');
+            
+            // Remove active class from all tabs in this section
+            parentSection.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all tab contents in this section
+            parentSection.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Add active class to clicked tab
+            element.classList.add('active');
+            
+            // Show corresponding tab content
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Accordion toggle function
+        function toggleAccordion(element) {
+            element.classList.toggle('active');
+        }
+
+        // Copy code function
+        function copyCode(button) {
+            const codeContainer = button.closest('.code-container');
+            const code = codeContainer.querySelector('code').textContent;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                alert('Failed to copy code. Please try again.');
+            });
+        }
+
+        // Mobile sidebar toggle functionality
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            
+            sidebar.classList.toggle('active');
+            
+            // Update toggle icon
+            const icon = mobileToggle.querySelector('i');
+            if (sidebar.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(e) {
+            const sidebar = document.getElementById('sidebar');
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            
+            // Only close if sidebar is open and click is outside sidebar and toggle button
+            if (sidebar.classList.contains('active') && 
+                !sidebar.contains(e.target) && 
+                !mobileToggle.contains(e.target)) {
+                sidebar.classList.remove('active');
+                mobileToggle.querySelector('i').className = 'fas fa-bars';
+            }
+        });
+
+        // Enhanced switchModule function for mobile compatibility
+        const originalSwitchModule = window.switchModule;
+        window.switchModule = function(moduleId, element) {
+            // Call original function
+            if (originalSwitchModule) {
+                originalSwitchModule(moduleId, element);
+            } else {
+                // Fallback implementation
+                const modules = document.querySelectorAll('.module');
+                modules.forEach(module => module.classList.remove('active'));
+                document.getElementById(moduleId).classList.add('active');
+                
+                const navItems = document.querySelectorAll('.nav-item');
+                navItems.forEach(item => item.classList.remove('active'));
+                element.classList.add('active');
+            }
+
+            // Close sidebar on mobile after navigation
+            if (window.innerWidth <= 768) {
+                const sidebar = document.getElementById('sidebar');
+                const mobileToggle = document.querySelector('.mobile-toggle');
+                sidebar.classList.remove('active');
+                mobileToggle.querySelector('i').className = 'fas fa-bars';
+            }
+        }
+
+        // Handle orientation change
+        window.addEventListener('orientationchange', function() {
+            setTimeout(() => {
+                const sidebar = document.getElementById('sidebar');
+                const mobileToggle = document.querySelector('.mobile-toggle');
+                
+                if (window.innerWidth > 768) {
+                    sidebar.classList.remove('active');
+                    mobileToggle.querySelector('i').className = 'fas fa-bars';
+                }
+            }, 100);
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            const sidebar = document.getElementById('sidebar');
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('active');
+                mobileToggle.querySelector('i').className = 'fas fa-bars';
+            }
+        });
+    </script>
+</body>
+</html>
